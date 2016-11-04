@@ -36,7 +36,7 @@ hints:
     description: "the process requires at least 4G of RAM"
 
 inputs:
-  fastqFile:
+  fastq_file:
     type: File # No reason to accept multiple files as no overall report is generated
     inputBinding:
       position: 1
