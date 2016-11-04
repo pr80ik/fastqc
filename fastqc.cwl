@@ -40,7 +40,13 @@ inputs:
     type: File # No reason to accept multiple files as no overall report is generated
     inputBinding:
       position: 1
-
+#    type:
+#      type: array
+#      items: File
+#    inputBinding:
+#      position: 1
+      
+#baseCommand: [ fastqc, "--outdir", . , "--extract"]
 baseCommand: [ fastqc, "--outdir", . , "--extract"]
 
 outputs:
