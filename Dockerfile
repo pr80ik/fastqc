@@ -16,10 +16,10 @@ RUN apt-get update && apt-get install --yes \
 
 RUN mkdir -p ${FASTQC_DEST} \
     && curl -SL ${FASTQC_PATH}/${FASTQC_ZIP} -o /tmp \
-    && unzip /tmp/${FASTQC_ZIP} -d ${FASTQC_DEST}
+    && unzip /tmp/${FASTQC_ZIP} -d ${FASTQC_DEST} \
     && chmod 755 ${FASTQC_DEST}/fastqc \
-    && ln -s ${FASTQC_DEST}/fastqc/fastqc /usr/local/bin/fastqc \
-    && rm -rf /tmp/fastqc_*.zip
+    && ln -s ${FASTQC_DEST}/fastqc /usr/local/bin/fastqc \
+    && rm -rf /tmp/${FASTQC_ZIP}
      
 ENTRYPOINT ["fastqc"]
 CMD ["--help"]
