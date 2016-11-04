@@ -8,7 +8,8 @@ MAINTAINER Walt Shands
 RUN apt-get update && apt-get install --yes \
     openjdk-8-jre \
     unzip \
-    curl
+    curl \
+    perl
 
 ENV FASTQC_PATH http://www.bioinformatics.babraham.ac.uk/projects/fastqc
 ENV FASTQC_ZIP fastqc_v0.11.5.zip
