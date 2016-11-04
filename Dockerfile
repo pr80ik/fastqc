@@ -1,24 +1,24 @@
 # FASTQC
-# Set the base image to Ubuntu
 FROM ubuntu:latest
 
 # File Author / Maintainer
 MAINTAINER Walt Shands
 
-# Install OpenJDK 7 JRE
-#RUN apt-get update && apt-get install --yes \
-#    openjdk-7-jre \
-#    perl \
-#    unzip
+ENV FASTQC_PATH http://www.bioinformatics.babraham.ac.uk/projects/fastqc
+ENV FASTQC_ZIP fastqc_v0.11.5.zip
+ENV FASTQC_DEST /usr/local/FastQC/
 
-# Download FastQC
-ADD http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip /tmp/
+# Install OpenJDK JRE
+RUN apt-get update && apt-get install --yes \
+    openjdk-8-jre \
+    unzip \
+    curl
 
-# Install FastQC
-RUN cd /usr/local && \
-    unzip /tmp/fastqc_*.zip && \
-    chmod 755 /usr/local/FastQC/fastqc && \
-    ln -s /usr/local/FastQC/fastqc /usr/local/bin/fastqc && \
-    rm -rf /tmp/fastqc_*.zip
-
+RUN mkdir -p ${FASTQC_DEST} \
+    && curl -SL ${FASTQC_PATH}/${FASTQC_ZIP} -o /tmp \
+    && unzip /tmp/${FASTQC_ZIP} -d ${FASTQC_DEST}
+    && chmod 755 ${FASTQC_DEST}/fastqc \
+    && ln -s ${FASTQC_DEST}/fastqc/fastqc /usr/local/bin/fastqc \
+    && rm -rf /tmp/fastqc_*.zip
+     
 ENTRYPOINT ["fastqc"]
