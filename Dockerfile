@@ -22,3 +22,4 @@ RUN mkdir -p ${FASTQC_DEST} \
     && rm -rf /tmp/fastqc_*.zip
      
 ENTRYPOINT ["fastqc"]
+CMD ["--help"]
