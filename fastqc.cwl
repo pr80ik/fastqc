@@ -76,6 +76,6 @@ containing the raw data from which plots were drawn."
       items: File
     outputBinding:
       # should be put in the working directory
-       glob: "./*"
+       glob: "*.html"
     doc: "HTML reports with embedded graphs"
 
