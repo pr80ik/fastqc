@@ -1,6 +1,8 @@
 {
-    "fastq_file": {
+    "fastq_file": [
+        {
         "class": "File",
         "path": "https://s3.amazonaws.com/bcbio_nextgen/NA12878-NGv3-LAB1360-A_1.fastq.gz"
-    }
+        }
+    ]    
 }
