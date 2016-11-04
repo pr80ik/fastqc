@@ -21,5 +21,5 @@ RUN curl -SL ${FASTQC_PATH}/${FASTQC_ZIP} -o /tmp/${FASTQC_ZIP} \
     && ln -s ${FASTQC_DEST}/FastQC/fastqc /usr/local/bin/fastqc \
     && rm -rf /tmp/${FASTQC_ZIP}
      
-ENTRYPOINT ["fastqc"]
-CMD ["--help"]
+#ENTRYPOINT ["fastqc"]
+#CMD ["--help"]
