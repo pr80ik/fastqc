@@ -45,9 +45,9 @@ inputs:
 #      items: File
 #    inputBinding:
 #      position: 1
-      
+
 #baseCommand: [ fastqc, "--outdir", . , "--extract"]
-baseCommand: [ fastqc, "--outdir", . , "--extract"]
+baseCommand: [ fastqc, "--outdir", .]
 
 outputs:
   zippedFile:
