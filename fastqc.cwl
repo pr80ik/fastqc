@@ -3,30 +3,27 @@
 class: CommandLineTool
 id: "fastqc"
 label: "A quality control application for high throughput sequence data"
-cwlVersion: v1.0 
-doc: |
-    ![build_status](https://quay.io/wshands/fastqc/status)
-    A Docker container for the fastqc command. 
-    See the fastqc (http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) 
-    website for more information.
-    ```
-    Usage:
-    # fetch CWL
-    $> dockstore tool cwl --entry quay.io/wshands/fastqc > fastqc.cwl
-    # make a runtime JSON template and edit it
-    $> dockstore tool convert cwl2json --cwl fastqc.cwl > fastqc.json
-    # run it locally with the Dockstore CLI
-    $> dockstore tool launch --entry quay.io/wshands/fastqc  --json fastqc.json
-    ```
+cwlVersion: v1.0
 
-#dct:creator:
-#  "@id": "jshands@ucsc.edu"
-#  foaf:name: Walt Shands
-#  foaf:mbox: "jshands@ucsc.edu"
+$namespaces:
+  dct: http://purl.org/dc/terms/
+  foaf: http://xmlns.com/foaf/0.1/
+
+doc: |
+    ![build_status](https://quay.io/repository/briandoconnor/fastqc/status)
+    A Docker container for the fastqc command.
+    See the fastqc (http://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
+    website for more information.
+
+
+dct:creator:
+  '@id': http://orcid.org/0000-0002-7681-6415
+  foaf:name: "Brian O'Connor"
+  foaf:mbox: "briandoconnor@gmail.com"
 
 requirements:
   - class: DockerRequirement
-    dockerPull: "quay.io/wshands/fastqc"
+    dockerPull: "quay.io/briandoconnor/fastqc:0.11.5"
 
 hints:
   - class: ResourceRequirement
@@ -36,46 +33,31 @@ hints:
     description: "the process requires at least 4G of RAM"
 
 inputs:
-  fastq_file:
-#    type: File # No reason to accept multiple files as no overall report is generated
-#    inputBinding:
-#      position: 1
-    type:
+  fastq_files:
+    type?:
       type: array
       items: File
+    format: http://edamontology.org/format_1930
     inputBinding:
       position: 1
+      prefix: --fastq
 
-#baseCommand: [ fastqc, "--outdir", . , "--extract"]
-baseCommand: [ fastqc, "--outdir", .]
-
-#outputs:
-#  zippedFile:
-#    type: File
-#    outputBinding:
-#      glob: "*.zip"
-#  report:
-#    type: File
-#    outputBinding:
-#      glob: "./*"
+  tar_files:
+    type?:
+      type: array
+      items: File
+    format: http://purl.obolibrary.org/obo/OBI_0000326
+    inputBinding:
+      position: 2
+      prefix: --tar
 
 outputs:
   zipped_files:
-    type:
-      type: array
-      items: File
+    type: File
+    format: http://purl.obolibrary.org/obo/OBI_0000326
     outputBinding:
       # should be put in the working directory
-       glob: "*.zip"
-    doc: "Individual graph files and additional data files
-containing the raw data from which plots were drawn."
+       glob: "fastqc_reports.tar.gz"
+    doc: "This tarball includes individual graph files and additional data files containing the raw data from which plots were drawn along with HTML reports with embedded graphs."
 
-  report_files:
-    type:
-      type: array
-      items: File
-    outputBinding:
-      # should be put in the working directory
-       glob: "*.html"
-    doc: "HTML reports with embedded graphs"
-
+baseCommand: [ "run-fastqc" ]
