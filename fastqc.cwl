@@ -34,7 +34,7 @@ hints:
 
 inputs:
   fastq_files:
-    type?:
+    type:
       type: array
       items: File
     format: http://edamontology.org/format_1930
@@ -43,7 +43,7 @@ inputs:
       prefix: --fastq
 
   tar_files:
-    type?:
+    type:
       type: array
       items: File
     format: http://purl.obolibrary.org/obo/OBI_0000326
@@ -52,7 +52,7 @@ inputs:
       prefix: --tar
 
 outputs:
-  zipped_files:
+  zipped_file:
     type: File
     format: http://purl.obolibrary.org/obo/OBI_0000326
     outputBinding:

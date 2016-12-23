@@ -1,12 +1,18 @@
 {
-    "fastq_file": [
+    "fastq_files": [
         {
         "class": "File",
-        "path": "https://s3.amazonaws.com/bcbio_nextgen/NA12878-NGv3-LAB1360-A_1.fastq.gz"
-        },
+        "path": "https://github.com/briandoconnor/fastqc/blob/master/sample.fastq.gz?raw=true"
+        }
+    ],
+    "tar_files": [
         {
         "class": "File",
-        "path": "https://s3.amazonaws.com/bcbio_nextgen/NA12878-NGv3-LAB1360-A_2.fastq.gz"
-        }        
-    ]    
+        "path": "https://github.com/briandoconnor/fastqc/blob/master/sample.tar?raw=true"
+        }
+    ],
+    "zipped_file" : {
+        "class": "File",
+        "path": "/tmp/fastqc_reports.tar.gz"
+    }
 }

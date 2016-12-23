@@ -40,13 +40,21 @@ This is the parameterization of the BAM stat tool, a copy is present in this rep
 
 ```
 {
-  "bam_input": {
+    "fastq_files": [
+        {
         "class": "File",
-        "path": "ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/data/NA12878/alignment/NA12878.chrom20.ILLUMINA.bwa.CEU.low_coverage.20121211.bam"
-    },
-    "bamstats_report": {
+        "path": "https://github.com/briandoconnor/fastqc/blob/master/sample.fastq.gz?raw=true"
+        }
+    ],
+    "tar_files": [
+        {
         "class": "File",
-        "path": "/tmp/bamstats_report.zip"
+        "path": "https://github.com/briandoconnor/fastqc/blob/master/sample.tar?raw=true"
+        }
+    ],
+    "zipped_file" : {
+        "class": "File",
+        "path": "/tmp/fastqc_reports.tar.gz"
     }
 }
 ```
@@ -55,18 +63,4 @@ This is the parameterization of the BAM stat tool, a copy is present in this rep
 
 Run it using the `dockstore` CLI:
 
-```
-Usage:
-# fetch CWL
-$> dockstore cwl --entry quay.io/collaboratory/dockstore-tool-bamstats:1.25-3 > Dockstore.cwl
-# make a runtime JSON template and edit it (or use the content of sample_configs.json above)
-$> dockstore convert cwl2json --cwl Dockstore.cwl > Dockstore.json
-# run it locally with the Dockstore CLI
-$> dockstore launch --entry quay.io/collaboratory/dockstore-tool-bamstats:1.25-3 \
-    --json Dockstore.json
-```
-
-
-U0b_TGACCA_L002_R1_006.fastq.gz
-U0b_TGACCA_L002_R1_006_fastqc.html
-U0b_TGACCA_L002_R1_006_fastqc.zip
+    dockstore tool launch --entry fastqc.cwl  --local-entry --json fastqc.json
