@@ -35,7 +35,8 @@ hints:
 inputs:
   fastq_files:
     type:
-      type: array
+    - "null"
+    - type: array
       items: File
     format: http://edamontology.org/format_1930
     inputBinding:
@@ -44,7 +45,8 @@ inputs:
 
   tar_files:
     type:
-      type: array
+    - "null"
+    - type: array
       items: File
     format: http://purl.obolibrary.org/obo/OBI_0000326
     inputBinding:

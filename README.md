@@ -36,7 +36,7 @@ This tool can be found at the [Dockstore](https://dockstore.org), login with you
 
 ### Make a Parameters JSON
 
-This is the parameterization of the BAM stat tool, a copy is present in this repo called `sample_configs.json`:
+This is the parameterization of the BAM stat tool, a copy is present in this repo called `fastqc.json`:
 
 ```
 {
@@ -58,6 +58,8 @@ This is the parameterization of the BAM stat tool, a copy is present in this rep
     }
 }
 ```
+
+You can leave out either the fastq_files or tar_files as well.
 
 ### Run with the CLI
 

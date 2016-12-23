@@ -51,8 +51,14 @@ def main():
     print "options:", OPTIONS
 
     fastq_files = OPTIONS.fastq
+    if fastq_files == None:
+      fastq_files = []
 
-    for tar_file in OPTIONS.tar:
+    tar_files = OPTIONS.tar
+    if tar_files == None:
+      tar_files = []
+
+    for tar_file in tar_files:
       # untar
       tar = tarfile.open(tar_file)
       tar.list()

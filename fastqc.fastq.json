@@ -1,0 +1,12 @@
+{
+  "fastq_files": [
+      {
+      "class": "File",
+      "path": "https://github.com/briandoconnor/fastqc/blob/master/sample.fastq.gz?raw=true"
+      }
+  ],
+    "zipped_file" : {
+        "class": "File",
+        "path": "/tmp/fastqc_reports.tar.gz"
+    }
+}
