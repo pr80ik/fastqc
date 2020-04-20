@@ -28,9 +28,8 @@ requirements:
 hints:
   - class: ResourceRequirement
     coresMin: 1
-    ramMin: 4092
+    ramMin: 4092 #the process requires at least 4G of RAM
     outdirMin: 512000
-    description: "the process requires at least 4G of RAM"
 
 inputs:
   fastq_files:
